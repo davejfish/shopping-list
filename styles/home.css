@@ -1,0 +1,51 @@
+section {
+    align-items: center;
+}
+
+section h2 {
+    text-align: center;
+    color: white;
+}
+
+.shopping-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 125px;
+    padding: 15px;
+    gap: 10px;
+}
+
+.shopping-list li {
+    position: relative;
+    border: solid 1px black;
+    background-color: white;
+    padding: 10px;
+}
+
+.shopping-list h2 {
+    color: #02010A;
+}
+
+.shopping-list button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: none;
+}
+
+.shopping-list button:hover {
+    background-color: aqua;
+}
+
+.add-item {
+    display: flex;
+    padding: 10px;
+    margin: auto;
+    color: white;
+    justify-content: center;
+}
+
+.add-item input {
+    margin: 0 10px;
+}
