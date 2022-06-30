@@ -31,10 +31,15 @@ export default function createBuildShoppingList(root, { handleUpdate, handleDele
 
             const editNumber = document.createElement('input');
             editNumber.type = 'number';
+            editNumber.min = '0';
             editNumber.classList.add('hidden');
             editNumber.classList.add('editItem');
             editNumber.value = foodItem.quantity;
             editNumber.addEventListener('change', () => {
+                if (editNumber.value <= 0) {
+                    alert('Please enter a number higher than 0');
+                    return;
+                }
                 foodItem.quantity = editNumber.value;
                 handleUpdate(foodItem);
             });
