@@ -19,7 +19,7 @@ async function handlePageLoad() {
     display();
 }
 
-async function handleAddItem(item, quantity) {
+async function handleAddItem({ item, quantity }) {
     const itemToAdd = {
         item: item,
         quantity: quantity,
@@ -36,6 +36,8 @@ async function handleAddItem(item, quantity) {
 async function handleUpdate(foodItem) {
     const dataToUpdate = {
         bought: foodItem.bought,
+        item: foodItem.item,
+        quantity: foodItem.quantity,
         id: foodItem.id,
     };
 

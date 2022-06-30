@@ -12,17 +12,44 @@ export default function createBuildShoppingList(root, { handleUpdate, handleDele
             if (!foodItem.bought) {
                 li.setAttribute('id', '');
             }
+
+            const editItem = document.createElement('input');
+            editItem.value = foodItem.item;
+            editItem.classList.add('hidden');
+            editItem.classList.add('editItem');
+            editItem.addEventListener('change', () => {
+                foodItem.item = editItem.value;
+                handleUpdate(foodItem);
+            });
             
             const item = document.createElement('h2');
-            item.textContent = `${foodItem.item}: ${foodItem.quantity}`;
-            item.addEventListener('click', () => {
-                
-                if (!foodItem.bought) {
-                    foodItem.bought = true;
-                }
-                else {
-                    foodItem.bought = false;
-                }
+            item.textContent = `${foodItem.item}`;
+            item.addEventListener('dblclick', () => {
+                editItem.classList.remove('hidden');
+            });
+
+            const editNumber = document.createElement('input');
+            editNumber.type = 'number';
+            editNumber.classList.add('hidden');
+            editNumber.classList.add('editItem');
+            editNumber.value = foodItem.quantity;
+            editNumber.addEventListener('change', () => {
+                foodItem.quantity = editNumber.value;
+                handleUpdate(foodItem);
+            });
+
+            const number = document.createElement('h2');
+            number.textContent = foodItem.quantity;
+            number.addEventListener('dblclick', () => {
+                editNumber.classList.remove('hidden');
+            });
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = foodItem.bought;
+
+            checkbox.addEventListener('change', () => {
+                foodItem.bought = checkbox.checked;
                 handleUpdate(foodItem);
             });
 
@@ -32,7 +59,7 @@ export default function createBuildShoppingList(root, { handleUpdate, handleDele
                 handleDelete(foodItem);
             });
 
-            li.append(item, deleteButton);
+            li.append(item, number, checkbox, deleteButton, editItem, editNumber);
             root.append(li);
         }
     };
