@@ -49,3 +49,7 @@ section h2 {
 .add-item input {
     margin: 0 10px;
 }
+
+.bought {
+    text-decoration-line: line-through;
+}
