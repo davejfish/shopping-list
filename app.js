@@ -13,15 +13,9 @@ async function handlePageLoad() {
     state.user = getUser();
     protectPage(state.user);
 
-    const { data, error } = await getShoppingList();
-
-    if (error) {
-        console.log(error);
-    }
-    else {
-        state.shoppingList = data;
-    }
-
+    const { data } = await getShoppingList();
+    state.shoppingList = data;
+    
     display();
 }
 
@@ -30,37 +24,36 @@ async function handleAddItem(item, quantity) {
         item: item,
         quantity: quantity,
         bought: false,
+        user_id: state.user.id
     };
     
-    const { data, error } = await addItem(itemToAdd);
-    if (error) {
-        console.log(error);
-    }
-    else {
-        state.shoppingList.push(data);
-    }
+    const { data } = await addItem(itemToAdd);
+    state.shoppingList.push(data);
 
     display();
 }
 
 async function handleUpdate(foodItem) {
     const dataToUpdate = {
-        bought: foodItem.bought
+        bought: foodItem.bought,
+        id: foodItem.id,
     };
+
     const data = await updateItem(dataToUpdate);
+    
     const index = state.shoppingList.indexOf(foodItem);
     state.shoppingList[index] = data;
+    display();
 }
 
+
 async function handleDelete(foodItem) {
-    const error = await deleteItem(foodItem);
-    if (error) {
-        console.log(error);
-    }
-    else {
-        const index = state.shoppingList(foodItem);
-        state.shoppingList.splice(index, 1);
-    }
+    await deleteItem(foodItem);
+    
+    const index = state.shoppingList.indexOf(foodItem);
+    state.shoppingList.splice(index, 1);
+    
+    display();
 }
 
 async function handleSignOut() {

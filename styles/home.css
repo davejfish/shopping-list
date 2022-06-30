@@ -50,6 +50,6 @@ section h2 {
     margin: 0 10px;
 }
 
-.bought {
+#bought {
     text-decoration-line: line-through;
 }

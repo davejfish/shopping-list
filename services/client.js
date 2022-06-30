@@ -8,40 +8,35 @@ export const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 export async function getShoppingList() {
     const response = await client
         .from('shopping-list')
-        .select(`
-            item, 
-            quantity, 
-            bought,
-            id`
-        );
+        .select();
     return response;
 }
 
-export async function addItem({ item, quantity, bought }) {
+export async function addItem({ item, quantity, bought, user_id }) {
     
     const response = await client
         .from('shopping-list')
-        .insert({ item: item, quantity: quantity, bought: bought })
+        .insert({ item: item, quantity: quantity, bought: bought, user_id: user_id })
         .single();
 
     return response;
 }
 
-export async function updateItem({ foodItem }) {
+export async function updateItem(foodItem) {
     const response = await client
         .from('shopping-list')
-        .update()
+        .update(foodItem)
         .match({ id: foodItem.id })
         .single();
 
-    return response;
+    return response.data;
 }
 
-export async function deleteItem({ foodItem }) {
+export async function deleteItem(foodItem) {
     const response = await client
         .from('shopping-list')
         .delete()
-        .match({ id: foodItem.id })
+        .eq('id', `${foodItem.id}`)
         .single();
 
     return response;
