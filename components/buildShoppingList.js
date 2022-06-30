@@ -26,6 +26,7 @@ export default function createBuildShoppingList(root, { handleUpdate, handleDele
             item.textContent = `${foodItem.item}`;
             item.addEventListener('dblclick', () => {
                 editItem.classList.remove('hidden');
+                editItem.focus();
             });
 
             const editNumber = document.createElement('input');
@@ -42,6 +43,7 @@ export default function createBuildShoppingList(root, { handleUpdate, handleDele
             number.textContent = foodItem.quantity;
             number.addEventListener('dblclick', () => {
                 editNumber.classList.remove('hidden');
+                editNumber.focus();
             });
 
             const checkbox = document.createElement('input');

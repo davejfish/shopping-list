@@ -26,6 +26,8 @@ async function handleAddItem({ item, quantity }) {
         bought: false,
         user_id: state.user.id
     };
+
+    if (!itemToAdd.quantity) itemToAdd.quantity = 1;
     
     const { data } = await addItem(itemToAdd);
     state.shoppingList.push(data);
