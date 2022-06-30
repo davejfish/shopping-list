@@ -59,6 +59,11 @@ section h2 {
 
 #bought {
     text-decoration-line: line-through;
+    color: gray;
+}
+
+#bought h2 {
+    color: grey;
 }
 
 .editItem {
