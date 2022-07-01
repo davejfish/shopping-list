@@ -8,7 +8,7 @@ body {
     height: 100%;
     padding-bottom: 30px;
     font-family: 'Rubik', san-serif;
-    background: var(--background);
+    background: #04052E;
 }
 
 header {

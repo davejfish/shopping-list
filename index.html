@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/home.css" />
+
     <title>Cool Web App</title>
 </head>
 
@@ -25,7 +26,21 @@
     </header>
 
     <main>
-
+        <form class="add-item">
+            <label>
+                food:
+                <input required name="food">
+            </label>
+            <label>
+                quantity:
+                <input type="number" min="0" name="quantity">
+            </label>
+            <button>submit</button>
+        </form>
+        <section>
+            <h2>shopping list</h2>
+            <ul class="shopping-list"></ul>
+        </section>
     </main>
 
     <footer>&copy;2022 Aspiring Software Developer</footer>
