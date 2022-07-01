@@ -15,8 +15,7 @@ export default function createBuildShoppingList(root, { handleUpdate, handleDele
 
             const editItem = document.createElement('input');
             editItem.value = foodItem.item;
-            editItem.classList.add('hidden');
-            editItem.classList.add('editItem');
+            editItem.classList.value = 'hidden editItem';
             editItem.addEventListener('change', () => {
                 foodItem.item = editItem.value;
                 handleUpdate(foodItem);
@@ -32,8 +31,7 @@ export default function createBuildShoppingList(root, { handleUpdate, handleDele
             const editNumber = document.createElement('input');
             editNumber.type = 'number';
             editNumber.min = '0';
-            editNumber.classList.add('hidden');
-            editNumber.classList.add('editItem');
+            editNumber.classList.value = 'hidden editItem';
             editNumber.value = foodItem.quantity;
             editNumber.addEventListener('change', () => {
                 if (editNumber.value <= 0) {
